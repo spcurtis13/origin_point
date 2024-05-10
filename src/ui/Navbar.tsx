@@ -2,6 +2,7 @@
 import { SignInButton, SignOutButton,SignIn,UserButton, useUser} from "@clerk/nextjs";
 
 export default function Navbar() {
+    const { isSignedIn } = useUser();
 
   return (
         <nav className="bg-black text-white p-4">
@@ -22,11 +23,19 @@ export default function Navbar() {
             </div>
             <div className="flex items-center">
                 <div className="flex-shrink-0">
-                <SignInButton>
-                    <button className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700">
-                        Sign in    
-                    </button>
-                </SignInButton>
+                {isSignedIn ? (
+                    <SignOutButton>
+                        <button className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700">
+                            Sign out
+                        </button>
+                    </SignOutButton>
+                ) : (
+                    <SignInButton redirectUrl="/app">
+                        <button className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700">
+                            Sign in
+                        </button>
+                    </SignInButton>
+                )}
                 </div>
             </div>
             </div>
