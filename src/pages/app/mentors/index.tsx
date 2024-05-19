@@ -1,23 +1,43 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import VerticalNavbar from '~/ui/VerticalNavbar';
 import { api } from "~/utils/api";
 import Header from '~/ui/Header';
 
+interface Mentor {
+    email: string;
+    firstName: string;
+    lastName: string;
+    industry: string;
+    role: string;
+    available: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+  }
+
+
 export default function Index() {
   const [industry, setIndustry] = useState('');
   const [role, setRole] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState<Mentor[]>([]);
 
   const { data } = api.mentor.getAll.useQuery();
 
   const handleSave = () => {
-    const filtered = data.filter(mentor =>
-      (industry === '' || mentor.industry === industry) &&
-      (role === '' || mentor.role === role)
-    );
-    setFilteredData(filtered);
-    console.log(`Searching for ${role} in ${industry} industry`);
+    if (data) {
+      const filtered = data.filter(mentor =>
+        (industry === '' || mentor.industry === industry) &&
+        (role === '' || mentor.role === role)
+      );
+      setFilteredData(filtered);
+    }
   };
+
+  useEffect(() => {
+    if (data) {
+      handleSave();
+    }
+  }, [data]);
+
 
   return (
     <>
