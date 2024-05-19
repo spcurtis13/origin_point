@@ -1,20 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import VerticalNavbar from '~/ui/VerticalNavbar';
 import { api } from "~/utils/api";
 import Header from '~/ui/Header';
 
+interface Student {
+    email: string;
+    firstName: string;
+    lastName: string;
+    major: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
 export default function Index() {
   const [major, setMajor] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState<Student[]>([]);
 
   const { data } = api.student.getAll.useQuery();
 
   const handleSave = () => {
-    const filtered = data.filter(student =>
-      (major === '' || student.major === major)
-    );
-    setFilteredData(filtered);
-  };
+    if(data){
+        const filtered = data.filter(student =>
+            (major === '' || student.major === major)
+        );
+          setFilteredData(filtered);
+        };
+    };
+
+    useEffect(() => {
+        if (data) {
+            handleSave();
+        }
+    }, [data]);
+    
 
   return (
     <>
@@ -39,6 +57,7 @@ export default function Index() {
                   <option value="Finance">Chinese</option>
                   <option value="Healthcare">Communication</option>
                   <option value="Technology">College Student Services Administration</option>
+                  <option value="English">English</option>
                   <option value="Technology">Environmental Arts and Humanities</option>
                   <option value="Technology">Economics</option>
                   <option value="Technology">Ethnic Studies</option>
