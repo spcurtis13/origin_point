@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import Header from '~/ui/Header';
 import VerticalNavbar from '~/ui/VerticalNavbar';
-import Header from '~/ui/header';
+
 
 export default function Index() {
   const [industry, setIndustry] = useState('');
