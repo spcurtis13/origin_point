@@ -10,15 +10,12 @@ export default function Navbar() {
             <div className="flex justify-between h-16">
             <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                <span className="font-bold">Origin Point</span>
+                <span className="font-bold ">Origin Point Career Strategy</span>
                 </div>
-                <div className="hidden sm:block sm:ml-6">
-                <div className="flex space-x-4">
-                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium"></a>
-                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium">Cases</a>
-                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-                </div>
+                <div className="flex space-x-4 items-center">
+                    <a href="#" className="ml-8 px-1 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#" className="px-1 py-2 rounded-md text-sm font-medium">Mentorship</a>
+                    <a href="#" className="px-1 py-2 rounded-md text-sm font-medium">Technical</a>
                 </div>
             </div>
             <div className="flex items-center">
