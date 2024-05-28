@@ -1,12 +1,9 @@
-# Create T3 App
+# Origin Point Career Strategy
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is an online database for finding mentors. This is primarily meant for liberal arts students but can be used by all majors for finding a mentor.
 
-## What's next? How do I make an app with this?
+To use this application click on the sign-in in the uppper right hand corner of the landing page and use your Linkedin profile to login.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
 
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
