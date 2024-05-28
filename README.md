@@ -7,7 +7,7 @@ elsewhere in their eductational journey.
 
 To use this application click on the sign-in in the uppper right hand corner of the landing page and use your Linkedin profile to login.
 
-These are the techologies used in this project
+These are the techologies used in this project:
 
 
 - [Next.js](https://nextjs.org)
@@ -21,4 +21,4 @@ These are the techologies used in this project
 Once logged in create a profile and specify whether you are a student or a mentor. Once you have created your profile you can click students or mentors and search for people who are 
 in the role and industry.
 
-We wish you the best using our plaform
+We wish you the best using our plaform.
