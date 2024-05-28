@@ -4,12 +4,11 @@ import Image from "next/image";
 import siteMapJPG from '../../public/siteMap.jpg'
 import mentoring from '../../public/mentoring.png'
 import liberalArtsWoman from '../../public/image.webp'
-import { SignInButton, SignOutButton,SignIn,UserButton, useUser} from "@clerk/nextjs";
 
-
-import { api } from "~/utils/api";
+//This page is primarily a digital brochure explaining the usefulness of the application
 
 export default function Home() {
+    //No functions needed becasue Login is through Navbar
 
   return (
     <>

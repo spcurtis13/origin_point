@@ -26,6 +26,43 @@ export const studentRouter = createTRPCRouter({
       });
     }),
 
+    update: publicProcedure
+    .input(z.object({
+      email: z.string().email(),
+      firstName: z.string().min(1).optional(),
+      lastName: z.string().min(1).optional(),
+      major: z.string().min(1).optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      // simulate a slow db call
+  
+      return ctx.db.student.update({
+        where: {
+          email: input.email,
+        },
+        data: {
+          firstName: input.firstName,
+          lastName: input.lastName,
+          major: input.major
+        },
+      });
+    }),
+  
+  
+      delete: publicProcedure
+      .input(z.object({
+          email: z.string().email(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+      // simulate a slow db call
+  
+      return ctx.db.student.delete({
+        where: {
+          email: input.email,
+        },
+      });
+    }),
+
     getAll: publicProcedure.query(async ({ ctx }) => {
         // Fetch all mentors from the database
         // const users = await clerkClient.users.getUserList

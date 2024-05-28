@@ -27,7 +27,7 @@ export default function Navbar() {
                         </button>
                     </SignOutButton>
                 ) : (
-                    <SignInButton redirectUrl="/app">
+                    <SignInButton redirectUrl="/app/profile">
                         <button className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700">
                             Sign in
                         </button>

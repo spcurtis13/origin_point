@@ -31,6 +31,47 @@ export const mentorRouter = createTRPCRouter({
       });
     }),
 
+    update: publicProcedure
+  .input(z.object({
+    email: z.string().email(),
+    firstName: z.string().min(1).optional(),
+    lastName: z.string().min(1).optional(),
+    industry: z.string().min(1).optional(),
+    role: z.string().min(1).optional(),
+    available: z.boolean().optional(),
+  }))
+  .mutation(async ({ ctx, input }) => {
+    // simulate a slow db call
+
+    return ctx.db.mentor.update({
+      where: {
+        email: input.email,
+      },
+      data: {
+        firstName: input.firstName,
+        lastName: input.lastName,
+        industry: input.industry,
+        role: input.role,
+        available: input.available,
+      },
+    });
+  }),
+
+
+    delete: publicProcedure
+    .input(z.object({
+        email: z.string().email(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+    // simulate a slow db call
+
+    return ctx.db.mentor.delete({
+      where: {
+        email: input.email,
+      },
+    });
+  }),
+
     getAll: publicProcedure.query(async ({ ctx }) => {
         // Fetch all mentors from the database
         // const users = await clerkClient.users.getUserList
