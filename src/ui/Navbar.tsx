@@ -12,12 +12,14 @@ export default function Navbar() {
                 <div className="flex-shrink-0 flex items-center">
                 <span className="font-bold ">Origin Point Career Strategy</span>
                 </div>
+                {/*These items just link to position on home landing page */}
                 <div className="flex space-x-4 items-center">
                     <a href="#" className="ml-8 px-1 py-2 rounded-md text-sm font-medium">Home</a>
                     <a href="#" className="px-1 py-2 rounded-md text-sm font-medium">Mentorship</a>
                     <a href="#" className="px-1 py-2 rounded-md text-sm font-medium">Technical</a>
                 </div>
             </div>
+            {/*When a user signs in it triggers entering the actual app */}
             <div className="flex items-center">
                 <div className="flex-shrink-0">
                 {isSignedIn ? (

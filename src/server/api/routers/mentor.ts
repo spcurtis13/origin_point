@@ -1,3 +1,5 @@
+//go to API docs for more information on how to execute API calls
+
 import { clerkClient } from "@clerk/nextjs/server";
 import { z } from "zod";
 
@@ -5,6 +7,8 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const mentorRouter = createTRPCRouter({
 
+    //public procedure for create see profile page for how to call as well as API docs as aluded to earlier
+    //typing is extremely important and zod(z) facilitates that
     create: publicProcedure
     .input(z.object({
       email: z.string().email(),
@@ -15,9 +19,8 @@ export const mentorRouter = createTRPCRouter({
       available: z.boolean(),
     }))
     .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
+      // works for non perfect async calls
 
-      // Now the data includes all necessary fields from your Mentor model
       return ctx.db.mentor.create({
         data: {
           email: input.email,
@@ -71,6 +74,8 @@ export const mentorRouter = createTRPCRouter({
       },
     });
   }),
+
+  //These procedures are for display
 
     getAll: publicProcedure.query(async ({ ctx }) => {
         // Fetch all mentors from the database

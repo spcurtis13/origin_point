@@ -24,22 +24,3 @@ in the role and industry.
 We wish you the best using our plaform.
 
 
-
-# API Documentation
-
-Base URL for API endpoints is 'api/mentor' or 'api/student'
-
-Endpoints
-
-Endpoint: POST /create
-
-Input:
-
-    {
-    "email": "string (valid email format)",
-    "firstName": "string (minimum 1 character)",
-    "lastName": "string (minimum 1 character)",
-    "industry": "string (minimum 1 character)",
-    "role": "string (minimum 1 character)",
-    "available": "boolean"
-    }

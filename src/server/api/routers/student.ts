@@ -1,7 +1,12 @@
+//go to API docs for more information on how to execute API calls
+
 import { clerkClient } from "@clerk/nextjs/server";
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+
+//public procedure for create see profile page for how to call as well as API docs as aluded to earlier
+   //typing is extremely important and zod(z) facilitates that
 
 export const studentRouter = createTRPCRouter({
 
@@ -34,7 +39,6 @@ export const studentRouter = createTRPCRouter({
       major: z.string().min(1).optional(),
     }))
     .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
   
       return ctx.db.student.update({
         where: {
@@ -48,13 +52,12 @@ export const studentRouter = createTRPCRouter({
       });
     }),
   
-  
+//copied over from mentor and adjusted for students
       delete: publicProcedure
       .input(z.object({
           email: z.string().email(),
       }))
       .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
   
       return ctx.db.student.delete({
         where: {

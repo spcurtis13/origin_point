@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/OriginPoint_Logo.jpg'
 
+//simple navigation bar for the actual app itself
+
 const VerticalNavbar = () => {
   return (
     <div className="flex flex-col items-center w-64 h-screen shadow-md bg-white">

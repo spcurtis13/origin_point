@@ -6,6 +6,8 @@ import Header from '~/ui/Header';
 
 export default function Index() {
 
+    //all nessesary states to keep track during process most will be used to send data to database at some point
+
     const { isLoaded } = useUser();
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -19,6 +21,9 @@ export default function Index() {
 
     const [job, setJob] = useState('');
     const [action, setAction] = useState('');
+
+    //create, update, remove mutation components  will adjust so that they display to screen 
+    //This component is a nessesary piece to call api
 
     const createM = api.mentor.create.useMutation({
         onSuccess: () => console.log('Success'),
@@ -35,6 +40,9 @@ export default function Index() {
         onError: (error) => console.error('Error', error)
     });
 
+    //create, update, remove mutation components will adjust so that they display to screen
+    //This component is a nessesary piece to call api
+
     const createS = api.student.create.useMutation({
         onSuccess: () => console.log('Success'),
         onError: (error) => console.error('Error', error)
@@ -49,6 +57,9 @@ export default function Index() {
         onSuccess: () => console.log('Success'),
         onError: (error) => console.error('Error', error)
     });
+
+    //the next two constants are the calls for create in both mentor and student
+    // 
 
     const createMentor = () => {
         const input = {
@@ -72,6 +83,8 @@ export default function Index() {
         createS.mutate(input);
     };
 
+// update constants (calls)
+
     const updateMentor = () => {
         const input = {
             email,
@@ -94,8 +107,9 @@ export default function Index() {
         updateS.mutate(input);
     };
 
+//delete calls
+
     const deleteMentor = () => {
-        // Add your delete logic here
         const input = {
             email
         };
@@ -110,12 +124,28 @@ export default function Index() {
         removeS.mutate(input);
     };
 
+    // Failsafe loads blank page if isLoaded is null
+
     if (!isLoaded) {
         return null;
     }
 
+    /**
+         * This component renders a user interface for managing mentor and student profiles. 
+         * It provides functionality for creating, updating, and deleting profiles based on user input.
+         * 
+         * The main functionalities include:
+         * - A form with input fields for common details (Email, First Name, Last Name) and 
+         *   additional fields specific to mentors (Industry, Role, Availability) or students (Major).
+         * - Action buttons for performing operations (Create, Update, Delete) on the profiles.
+         * - Conditional rendering based on the selected job type ('mentor' or 'student') and action type.
+         * - Initial buttons for the user to choose between managing mentors or students.
+         * - A cancel button to reset the form and selection states.
+    */
+
     const renderForm = () => {
         return (
+            // first part will always be the no matter mentor or student
             <>
                 <input
                     type="email"
@@ -138,6 +168,8 @@ export default function Index() {
                     onChange={e => setLastName(e.target.value)}
                     className="input input-bordered w-full max-w-md my-2 focus:ring-2 focus:ring-blue-500"
                 />
+
+                {/*ternary operators to render based on state of job whether that be 'mentor' or 'student' */}
                 {job === 'mentor' ? (
                     <>
                         <input
@@ -163,6 +195,7 @@ export default function Index() {
                                 className="checkbox checkbox-primary"
                             />
                         </label>
+                        {/*options for Create, update, delete and some styling for hover effects */}
                         {action === 'create' && (
                             <button onClick={createMentor} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700">Create Mentor</button>
                         )}
@@ -196,7 +229,7 @@ export default function Index() {
             </>
         );
     };
-
+    {/*this component will display first and chooses thate state for student or mentor then the next stage is the above piece the chooses read update or delet*/}
     return (
         <>
             <div className='flex flex-row w-full gap-4'>

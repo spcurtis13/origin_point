@@ -3,6 +3,8 @@ import VerticalNavbar from '~/ui/VerticalNavbar';
 import { api } from "~/utils/api";
 import Header from '~/ui/Header';
 
+//nessesary to define Student for typescript and states of an array of Students
+
 interface Student {
     email: string;
     firstName: string;
@@ -16,7 +18,11 @@ export default function Index() {
   const [major, setMajor] = useState('');
   const [filteredData, setFilteredData] = useState<Student[]>([]);
 
+  //puts the students all displayed at first
+
   const { data } = api.student.getAll.useQuery();
+
+  //gets the filtered list
 
   const handleSave = () => {
     if(data){
@@ -26,6 +32,8 @@ export default function Index() {
           setFilteredData(filtered);
         };
     };
+
+    //When data changes this will run and execute handleSave which will filter the data
 
     useEffect(() => {
         if (data) {
@@ -43,6 +51,10 @@ export default function Index() {
           <div className="flex flex-col w-full items-center justify-items-start min-h-screen py-10">
             <div className="bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-4xl">
               <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-5">
+                {/*
+                    This is just a simple filter by major the above useEffect hook actually makes changes when user filters
+                    Currently this just lists Liberal arts majors but more majors can be added as nessesary.
+                 */}
                 <select
                   className="form-select block w-full px-3 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   value={major}
@@ -78,6 +90,7 @@ export default function Index() {
                     <div className="font-bold text-center">Name</div>
                     <div className="font-bold text-center">Major</div>
                     <div className="font-bold text-center">Email</div>
+                    {/*This is the ui display piece of the filtered student list from above and displays it in a table */}
                     {filteredData.map((student, index) => (
                       <>
                         <div key={`name-${index}`}>{student.firstName} {student.lastName}</div>
