@@ -21,25 +21,13 @@ These are the techologies used in this project:
 Once logged in create a profile and specify whether you are a student or a mentor. Once you have created your profile you can click students or mentors and search for people who are 
 in the role and industry.
 
+Example video
+
+[Tutorial](https://youtu.be/514mlepmZQ4)
+
+There is a docs folder with a product diagram as well as the API documents located at the root level of this repository.
+
+
 We wish you the best using our plaform.
 
 
-
-# API Documentation
-
-Base URL for API endpoints is 'api/mentor' or 'api/student'
-
-Endpoints
-
-Endpoint: POST /create
-
-Input:
-
-    {
-    "email": "string (valid email format)",
-    "firstName": "string (minimum 1 character)",
-    "lastName": "string (minimum 1 character)",
-    "industry": "string (minimum 1 character)",
-    "role": "string (minimum 1 character)",
-    "available": "boolean"
-    }
