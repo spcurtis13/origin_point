@@ -69,6 +69,11 @@ export default function Index() {
                   <option value="Technology">Technology</option>
                   <option value="Finance">Finance</option>
                   <option value="Healthcare">Healthcare</option>
+                  <option value="Investment">Investment</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Aerospace">Aerospace</option>
+                  <option value="Real Estate">Real Estate</option>
+                  <option value="Fitness/Health">Fitness/Health</option>
                 </select>
                 <select
                   className="form-select block w-full px-3 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -79,6 +84,12 @@ export default function Index() {
                   <option value="Developer">Developer</option>
                   <option value="Designer">Designer</option>
                   <option value="Manager">Manager</option>
+                  <option value="Sales Executive">Sales Executive</option>
+                  <option value="Research Scientist">Research Scientist</option>
+                  <option value="Financial Advisor">Financial Advisor</option>
+                  <option value="Operations Manager">Operations Manager</option>
+                  <option value="Mechanical Engineer">Mechanical Engineer</option>
+                  <option value="Senior Finance Director">Senior Finance Director</option>
                 </select>
                 <button
                   onClick={handleSave}
