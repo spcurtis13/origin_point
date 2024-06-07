@@ -236,7 +236,7 @@ export default function Index() {
                 <VerticalNavbar />
                 <div className='flex flex-col w-full p-6'>
                     <Header pageTitle="Profile" />
-                    <div className="flex flex-col items-center justify-center p-5 bg-gray-100 rounded-lg shadow">
+                    <div className="flex flex-col items-center justify-center min-h-64 p-5 bg-gray-100 rounded-lg shadow">
                         {job === '' ? (
                             <div className="flex justify-center mb-4">
                                 <button 
